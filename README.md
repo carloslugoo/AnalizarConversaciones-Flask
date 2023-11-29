@@ -1,5 +1,5 @@
 # Analizador de conversaciones de WhatsApp
- Compronder acerca del analisis de datos mediante las bibliotecas y los metodos en Python <br>
+ Compronder acerca del analisis de datos mediante las bibliotecas y metodos en Python <br>
 # Resultado:
 - `Inicio`: <br>
 ✔️ Una pestaña que nos permite subir nuestra conversacion para posteriormente procesarla mediante Python.<br>
