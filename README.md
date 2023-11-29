@@ -12,7 +12,8 @@
 - `Estadisticas individuales`: <br>
 ✔️ Datos individuales de cada persona en la conversación (cantidad de mensajes, vides mandados, etc). <br>
 ✔️ Top de emojis y palabras mas utilizadas de cada persona <br>
-![image](https://github.com/carloslugoo/AnalizarConversaciones-Flask/assets/112581880/c86d9728-ac5f-46d4-9325-21f7969053e8) <br>
+![image](https://github.com/carloslugoo/AnalizarConversaciones-Flask/assets/112581880/c86d9728-ac5f-46d4-9325-21f7969053e8) 
+![image](https://github.com/carloslugoo/AnalizarConversaciones-Flask/assets/112581880/1bfe75cd-6167-4f29-83fb-c79feea10f97) <br>
 
   `Nota:` El tiempo de procesamiento aumenta considerablemente segun la cantidad de mensajes. <br>
 
