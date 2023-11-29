@@ -32,18 +32,16 @@ def recibir_archivo():
         return jsonify({'error': 'Formato de archivo no válido. Por favor, selecciona un archivo ZIP.'}), 400
 
 
-    try: 
-        #Leer el contenido del archivo ZIP sin extraerlo
-        with zipfile.ZipFile(file, 'r') as zip_file:
-            with zip_file.open('_chat.txt') as f:
-        #-------------------Procesa el chat-------------------#
-                chat_crudo = f.read().decode('utf-8')
-                #print(chat_crudo)
-                patron = re.compile(r'\[(\d+\/\d+\/\d+, \d+:\d+:\d+)\] (.+?): (.+)')
-                coincidencias = patron.findall(chat_crudo)
-                #print(coincidencias)
-    except Exception as e:
-        return jsonify({'error': 'El zip no contiene una conversación'}), 400
+    #Leer el contenido del archivo ZIP sin extraerlo
+    with zipfile.ZipFile(file, 'r') as zip_file:
+        with zip_file.open('_chat.txt') as f:
+    #-------------------Procesa el chat-------------------#
+            chat_crudo = f.read().decode('utf-8')
+            #print(chat_crudo)
+            patron = re.compile(r'\[(\d+\/\d+\/\d+, \d+:\d+:\d+)\] (.+?): (.+)')
+            coincidencias = patron.findall(chat_crudo)
+            #print(coincidencias)
+
     
 
     chat_procesado = pd.DataFrame(coincidencias, columns = ['Fecha y Hora', 'Emisor', 'Mensaje'])
@@ -188,19 +186,16 @@ def recibir_archivo():
     print(json_estadisticas_por_emisor)
     #-------------------Procesa los datos individuales del chat-------------------#
     nueva_url = url_for('estadisticas')
-    return jsonify({'redirect': True, 'url': nueva_url})
+    return jsonify({'url': nueva_url})
 
 
-@app.route('/estadisticas', methods=['GET'])
+@app.route('/estadisticas')
 def estadisticas():
     global estadisticas_generales
     global estadisticas_emisores
-    if not estadisticas_emisores and not estadisticas_generales:
-        return redirect(url_for('index'))
-    else:
-        print(estadisticas_generales)
-        print(estadisticas_emisores)
-        return render_template('estadisticas.html', generales = estadisticas_generales, emisores = estadisticas_emisores)
+    print(estadisticas_generales)
+    print(estadisticas_emisores)
+    return render_template('estadisticas.html', generales = estadisticas_generales, emisores = estadisticas_emisores)
 
 # Punto de entrada para la aplicación
 if __name__ == '__main__':
