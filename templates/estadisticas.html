@@ -1,0 +1,328 @@
+{% extends "./macro.html" %}
+
+{% block title %}Estadisticas{% endblock %}
+{% block content %}
+<div class="container px-0 py-5" id="hanging-icons">
+    <h1 class="pb-2 border-bottom"><i class="bi bi-people"></i> Personas en la <span class="text-success">conversación</span></h1>
+<div class="row">
+    {% for persona in generales['PersonasGeneral'] %}
+    <div class="col-sm-4">
+        <br>
+        <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-person-circle custom-icon me-3 text-success"></i>  {{ persona }}</h5>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+</div>
+</div>
+
+<div class="container px-0 py-0" id="hanging-icons">
+    <h1 class="pb-2 border-bottom"><i class="bi bi-bar-chart-line"></i> Datos <span class="text-success">generales</span></h1>
+    <div class="row">
+    <div class="col-sm-4">
+        <br>
+        <div class="card">
+            <div class="card-header text-center">
+                  Cantidad de mensajes
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center">{{generales['CantidadMensajesGeneral']}}</li>
+                </ul>
+            </div>
+        </div>
+   
+        <div class="col-sm-4">
+            <br>
+            <div class="card">
+                <div class="card-header text-center">
+                      Primer mensaje
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{generales['FInicio']}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                    <div class="card-header text-center">
+                          Ultimo mensaje
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center">{{generales['FFinal']}}</li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                    <div class="card-header text-center">
+                          Imagenes mandadas
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center">{{generales['ImagenGeneral']}}</li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                    <div class="card-header text-center">
+                          Audios mandados
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center">{{generales['AudioGeneral']}}</li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                    <div class="card-header text-center">
+                          Stickers mandados
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center">{{generales['StickerGeneral']}}</li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+            <div class="card">
+                <div class="card-header text-center">
+                      Videos mandados
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{generales['VideosGeneral']}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                    <div class="card-header text-center">
+                          Documentos mandados
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item text-center">{{generales['DocumentosGeneral']}}</li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <div class="card">
+                        <div class="card-header text-center">
+                              Llamadas realizadas
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item text-center">{{generales['LlamadasGeneral']}}</li>
+                            </ul>
+                        </div>
+            </div>
+        
+                <div class="col-sm-6 px-5 text-center">
+                    <br>
+                    <h3 class="pb-2"><i class="bi bi-emoji-astonished-fill"></i> Emojis mas <span class="text-success">utilizados</span></h3>
+              
+                    <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Emoji</th>
+                            <th scope="col">Veces utilizado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% set x = namespace(value=1) %}
+                            {% for emoji, veces in generales['EmojisGeneral'].items()%}
+                            
+                            <tr>
+                                <th scope="row">{{ x.value }}</th>
+                                <td>{{emoji}}</td>
+                                <td>{{veces}}</td>
+                            </tr>
+                            {% set x.value=x.value+1 %}
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="col-sm-6 px-5 text-center">
+                        <br>
+                        <h3 class="pb-2"><i class="bi bi-sort-up"></i> Palabras mas <span class="text-success">utilizadas</span></h3>
+                  
+                        <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Emoji</th>
+                                <th scope="col">Veces utilizado</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% set x = namespace(value=1) %}
+                                {% for emoji, veces in generales['PalabrasGeneral'].items()%}
+                                
+                                <tr>
+                                    <th scope="row">{{ x.value }}</th>
+                                    <td>{{emoji}}</td>
+                                    <td>{{veces}}</td>
+                                </tr>
+                                {% set x.value=x.value+1 %}
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                        </div>
+                </div>
+                </div>  
+                <div class="container px-0 py-5" id="hanging-icons">
+                    <h1 class="pb-2 border-bottom"><i class="bi bi-person-circle"></i> Datos <span class="text-success">individuales</span></h1>
+                    {% for emisor in emisores%}
+                    <div class="container px-4 py-0" id="hanging-icons">
+                        <br>
+                        <h3 class="pb-2 border-bottom"><i class="bi bi-person-circle"></i> {{emisor['Emisor']}}</span></h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <br>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                      Cantidad de mensajes
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item text-center">{{emisor['CantidadMensajes']}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-header text-center">
+                                              Imagenes mandadas
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                              <li class="list-group-item text-center">{{emisor['ImagenEmisor']}}</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-header text-center">
+                                              Audios mandados
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                              <li class="list-group-item text-center">{{emisor['AudioEmisor']}}</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-header text-center">
+                                              Stickers mandados
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                              <li class="list-group-item text-center">{{emisor['StickerEmisor']}}</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <br>
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                          Videos mandados
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                          <li class="list-group-item text-center">{{emisor['VideosEmisor']}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-header text-center">
+                                              Documentos mandados
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                              <li class="list-group-item text-center">{{emisor['DocumentosEmisor']}}</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <br>
+                                    <div class="card">
+                                            <div class="card-header text-center">
+                                                  Llamadas realizadas
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                  <li class="list-group-item text-center">{{emisor['LlamadasEmisor']}}</li>
+                                                </ul>
+                                            </div>
+                                </div>
+                                <div class="col-sm-6 px-5 text-center">
+                                    <br>
+                                    <h3 class="pb-2"><i class="bi bi-emoji-astonished-fill"></i> Los emojis de <span class="text-success">{{emisor['Emisor']}}</span></h3>
+                              
+                                    <table class="table table-sm">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Emoji</th>
+                                            <th scope="col">Veces utilizado</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% set x = namespace(value=1) %}
+                                            {% for emoji, veces in emisor['ConteoEmojis'].items()%}
+                                            
+                                            <tr>
+                                                <th scope="row">{{ x.value }}</th>
+                                                <td>{{emoji}}</td>
+                                                <td>{{veces}}</td>
+                                            </tr>
+                                            {% set x.value=x.value+1 %}
+                                            {%endfor%}
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="col-sm-6 px-5 text-center">
+                                        <br>
+                                        <h3 class="pb-2"><i class="bi bi-sort-up"></i> Las palabras de <span class="text-success">{{emisor['Emisor']}}</span></h3>
+                                  
+                                        <table class="table table-sm">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Emoji</th>
+                                                <th scope="col">Veces utilizado</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% set x = namespace(value=1) %}
+                                                {% for emoji, veces in emisor['ConteoPalabras'].items()%}
+                                                
+                                                <tr>
+                                                    <th scope="row">{{ x.value }}</th>
+                                                    <td>{{emoji}}</td>
+                                                    <td>{{veces}}</td>
+                                                </tr>
+                                                {% set x.value=x.value+1 %}
+                                                {%endfor%}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                </div>
+                    {%endfor%}
+                </div>
+
+
+
+    <style>
+        .custom-icon {
+    font-size: 2em;
+
+  }
+    </style>
+{% endblock %}

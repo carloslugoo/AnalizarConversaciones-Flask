@@ -1,0 +1,62 @@
+{% extends "./macro.html" %}
+
+{% block title %}Analiza tus conversaciones{% endblock %}
+{% block content %}
+    <!--MAIN-->
+    <div id="main-container">
+    <div class="container col-xxl-8 px-4 py-0 mt-0">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="/static/images/ez.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold lh-1 mb-3">
+            Analiza tus conversaciones de
+            <span class="text-success">WhatsApp.</span>
+          </h1>
+          <p class="lead">Con esta aplicacion, podras analizar y obtener informacion a partir de tus conversaciones de manera facil y efectiva!</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <label for="fileInput" class="btn btn-success btn-lg px-4 me-md-2">
+                Empezar
+              </label>
+             <!-- Input de tipo archivo oculto -->
+            <input type="file" id="fileInput" style="display:none" onchange="handleFileUpload()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="col-lg-12 text-center"> <!-- Agregado text-center para centrar el texto -->
+          <h1 class="display-4 fw-bold lh-1 mb-3">
+            <span class="text-success">¿</span>Como funciona<span class="text-success">?</span>
+          </h1>
+        </div>
+        <div class="row"> <!-- Agregado row para organizar los elementos en filas -->
+          <div class="col-lg-3 mb-4 text-center"> <!-- Cambiado a col-lg-3 para tener columnas de 4 en total -->
+            <i class="bi bi-file-earmark-zip custom-icon"></i>
+            <p class="lead fw-bold"><span class="text-success">1.</span> Guarda tu conversación desde la aplicación</p>
+          </div>
+          <div class="col-lg-3 mb-4 text-center"> <!-- Cambiado a col-lg-3 -->
+            <i class="bi bi-file-earmark-arrow-up custom-icon"></i>
+            <p class="lead fw-bold"><span class="text-success">2.</span> Sube tu conversación</p>
+          </div>
+          <div class="col-lg-3 mb-4 text-center"> <!-- Cambiado a col-lg-3 -->
+            <i class="bi bi-hourglass-split custom-icon"></i>
+            <p class="lead fw-bold"><span class="text-success">3.</span> Espera, el proceso tardara unos segundos</p>
+          </div>
+          <div class="col-lg-3 mb-4 text-center"> <!-- Cambiado a col-lg-3 -->
+            <i class="bi bi-emoji-wink custom-icon"></i>
+            <p class="lead fw-bold"><span class="text-success">4.</span> Disfruta de tus estadisticas</p>
+          </div>
+        </div>
+            <!-- Advertencia al final -->
+        <div class="col-lg-12 mt-4">
+        <div class="alert alert-warning" role="alert">
+          <p class="lead">
+            <strong>Importante:</strong> No almacenamos ninguna información de las conversaciones de los usuarios. Tu privacidad es nuestra prioridad.
+          </p>
+        </div>
+      </div>
+     </div>
+      <script src="/static/js/index.js"></script>
+{% endblock %}
